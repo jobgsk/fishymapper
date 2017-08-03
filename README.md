@@ -1,9 +1,9 @@
 # fishymapper
 
-###### Usage example
+## Usage example
 
 
-> Describe models:
+###### Describe models:
 
 ```
 @TableEntity(name = "test1_city")
@@ -162,7 +162,7 @@ public class Address implements IModel, Serializable {
         return "Address{" +
                 "id='" + id + '\'' +
                 "street='" + street + '\'' +
-                "person='" + person + '\'' +
+                //"person='" + person + '\'' +
                 ", city='" + city + '\'' +
                 '}';
     }
@@ -276,7 +276,7 @@ public class Person implements IModel, Serializable{
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                //", addresses=" + addresses +
+                ", addresses=" + addresses +
                 '}';
     }
 
@@ -304,7 +304,7 @@ public class Person implements IModel, Serializable{
 
 ```
 
-> Create DAO:
+###### Create DAO:
 
 ```
 public interface ICityDAO extends IGenericDAO<City> {
@@ -356,7 +356,7 @@ public class PersonDAO extends GenericDAO<Person> implements IPersonDAO {
 
 ```
 
-> init:
+###### init:
 
 ```
 
@@ -367,7 +367,7 @@ TransactionTemplate transactionTemplate = new TransactionTemplate(
 
 ```
 
-> Create models:
+###### Create models:
 
 ```
 ICityDAO cityDao = new CityDAO(dataSource);
@@ -405,7 +405,7 @@ final Person p1 = transactionTemplate.execute(new TransactionCallback<Person>() 
 
 ```
 
-> Read models:
+###### Read models:
 
 ```
 System.out.println(personDao.countOfPersons(p1));
@@ -416,7 +416,15 @@ for (Person p: personList) {
 
 ```
 
-> Delete model:
+> 1
+>
+> Person{id=1484, firstName='Java 1', lastName='Honk', addresses=[
+>    Address{id='1296'street='Main St.', city='City{, name='Toronto'}'},
+>    Address{id='1297'street='Bay St.', city='City{, name='Toronto'}'}]}
+>
+
+
+###### Delete model:
 
 ```
 transactionTemplate.execute(new TransactionCallbackWithoutResult() {
@@ -440,7 +448,7 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 ```
 
 
-> Build jar:
+###### Build jar:
 
 ```
 mvn clean compile assembly:single

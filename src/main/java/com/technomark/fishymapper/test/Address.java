@@ -93,7 +93,7 @@ public class Address implements IModel, Serializable {
         return "Address{" +
                 "id='" + id + '\'' +
                 "street='" + street + '\'' +
-                "person='" + person + '\'' +
+                //"person='" + person + '\'' +
                 ", city='" + city + '\'' +
                 '}';
     }

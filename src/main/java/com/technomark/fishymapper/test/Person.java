@@ -93,7 +93,7 @@ public class Person implements IModel, Serializable{
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                //", addresses=" + addresses +
+                ", addresses=" + addresses +
                 '}';
     }
 
