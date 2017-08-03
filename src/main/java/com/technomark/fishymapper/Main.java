@@ -74,6 +74,7 @@ public class Main {
 
         //Select all inserted user from the table
         System.out.println("\nList of persons in the table\n");
+        System.out.println(personDao.countOfPersons(p1));
         List<Person> personList = personDao.selectJoin();
         for (Person p: personList) {
             System.out.println(p);
