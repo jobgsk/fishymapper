@@ -1,0 +1,4 @@
+ds.database-driver=com.mysql.jdbc.Driver
+ds.url=jdbc:mysql://localhost:3306/spring_dating
+ds.username=troy
+ds.password=1
