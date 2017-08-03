@@ -1,10 +1,11 @@
 # fishymapper
 
+###### Usage example
 
-models:
+
+> Describe models:
 
 ```
-
 @TableEntity(name = "test1_city")
 public class City implements IModel, Serializable {
 
@@ -76,8 +77,9 @@ public class City implements IModel, Serializable {
         return result.intValue();
     }
 }
+```
 
-
+```
 @TableEntity(name = "test1_address")
 public class Address implements IModel, Serializable {
 
@@ -188,8 +190,9 @@ public class Address implements IModel, Serializable {
         return result.intValue();
     }
 }
+```
 
-
+```
 @TableEntity(name = "test1_person")
 public class Person implements IModel, Serializable{
 
@@ -301,14 +304,9 @@ public class Person implements IModel, Serializable{
 
 ```
 
-dao:
+> Create DAO:
 
 ```
-public interface IPersonDAO extends IGenericDAO<Person> {
-    public List<Person> selectJoin() throws SQLException;
-    public int countOfPersons(Person person) throws SQLException;
-}
-
 public interface ICityDAO extends IGenericDAO<City> {
 
 }
@@ -319,7 +317,13 @@ public class CityDAO extends GenericDAO<City> implements ICityDAO {
         super(City.class, dataSource);
     }
 }
+```
 
+```
+public interface IPersonDAO extends IGenericDAO<Person> {
+    public List<Person> selectJoin() throws SQLException;
+    public int countOfPersons(Person person) throws SQLException;
+}
 
 public class PersonDAO extends GenericDAO<Person> implements IPersonDAO {
 
@@ -352,7 +356,7 @@ public class PersonDAO extends GenericDAO<Person> implements IPersonDAO {
 
 ```
 
-init:
+> init:
 
 ```
 
@@ -363,7 +367,7 @@ TransactionTemplate transactionTemplate = new TransactionTemplate(
 
 ```
 
-create models:
+> Create models:
 
 ```
 ICityDAO cityDao = new CityDAO(dataSource);
@@ -401,7 +405,7 @@ final Person p1 = transactionTemplate.execute(new TransactionCallback<Person>() 
 
 ```
 
-read models:
+> Read models:
 
 ```
 System.out.println(personDao.countOfPersons(p1));
@@ -412,7 +416,7 @@ for (Person p: personList) {
 
 ```
 
-delete model:
+> Delete model:
 
 ```
 transactionTemplate.execute(new TransactionCallbackWithoutResult() {
@@ -436,7 +440,7 @@ transactionTemplate.execute(new TransactionCallbackWithoutResult() {
 ```
 
 
-Build jar:
+> Build jar:
 
 ```
 mvn clean compile assembly:single
